@@ -14,18 +14,20 @@ router.get('/create', async (req, res) => {
 
   })
   
-  router.post('/create', async (req, res) => {
+   router.post('/create', async (req, res) => {
     try {
-      const celebrities = await Celebrity.find();
-      res.render('movies/new-movie', { celebrities });
-    } catch (error) {
-      console.error(`Error fetching celebrities: ${error}`);
+      const movie = new Movie({
+        title: req.body.title,
+        genere: req.body.genere,
+        plot: req.body.plot,
+        // cast: req.body.cast
+      });
+      await movies.save();
       res.redirect('/movies');
+    } catch (error) {
+      res.render('movies/new-movie', { error: 'Error creating movie. Please try again.' });
     }
   });
   
   
-
-// all your routes here
-
 module.exports = router
