@@ -1,11 +1,14 @@
 <form method="POST" action="/movies/create">
     <label >Title:<input name="title" /></label>
+    <input name="'title" type="text"/>
     <label >Genre:<input name="genre" /></label>
+    <input name="genere" type="text"/>
     <label >Plot:<input name="plot"/></label>
+    <input name="'plot" type="text"/>
     <label >Cast:
         <select name="cast" multiple>
             <% celebrities.forEach((celeb) => { %>
-                <option value="<%- celeb.id%>"> <%= celeb.name %> </option>
+                <option value="<%- celeb._id%>"> <%= celeb.name %> </option>
             <% }) %>
         </select>
     </label>

@@ -39,5 +39,14 @@ router.get('/create', async (req, res) => {
       res.render('error');
     }
   });
+
+  router.get('/:movieId', async(req, res) =>{
+ try {
+   const movieDetails = await Movie.findById(req.params.movieId)
+   req.render('/movie-details', movie)
+ } catch (error) {
+   console.log(error) 
+ }
+  })
   
 module.exports = router
