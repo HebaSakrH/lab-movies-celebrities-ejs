@@ -30,4 +30,14 @@ router.get('/create', async (req, res) => {
   });
   
   
+  router.get('/', async (req, res) => {
+    try {
+      const movies = await Movie.find();
+      res.render('movies/movies', { movies });
+    } catch (error) {
+      console.log(error);
+      res.render('error');
+    }
+  });
+  
 module.exports = router
